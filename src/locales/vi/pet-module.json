@@ -1,0 +1,60 @@
+{
+  "PetPage": {
+    "meta_title": "Quản lý Thú cưng"
+  },
+  "AddPetDialog": {
+    "trigger": "Thêm",
+    "title": "Thêm thú cưng mới",
+    "description": "Điền thông tin để thêm thú cưng mới vào hệ thống.",
+    "success_message": "Thêm thú cưng thành công",
+    "error_message": "Không thể thêm thú cưng"
+  },
+  "PetTable": {
+    "columns": {
+      "id": "ID",
+      "name": "Tên",
+      "category": "Danh mục",
+      "status": "Trạng thái",
+      "tags": "Thẻ",
+      "photos": "Hình ảnh"
+    },
+    "status": {
+      "available": "Có sẵn",
+      "pending": "Đang chờ",
+      "sold": "Đã bán",
+      "unknown": "Không xác định"
+    },
+    "actions": {
+      "actions": "Hành động",
+      "copy_pet_id": "Sao chép ID",
+      "view_details": "Xem chi tiết",
+      "edit_pet": "Chỉnh sửa",
+      "delete_pet": "Xóa",
+      "open_menu": "Mở menu"
+    },
+    "search_placeholder": "Lọc tên...",
+    "photo_count": "{count} hình ảnh",
+    "select_all": "Chọn tất cả",
+    "select_row": "Chọn hàng"
+  },
+  "PetForm": {
+    "status": {
+      "available": "Có sẵn",
+      "pending": "Đang chờ",
+      "sold": "Đã bán"
+    },
+    "validation": {
+      "name_required": "Tên thú cưng là bắt buộc",
+      "category_name_required": "Tên danh mục là bắt buộc",
+      "photo_urls_required": "Ít nhất một ảnh",
+      "invalid_url": "URL không hợp lệ",
+      "tag_name_required": "Tên thẻ là bắt buộc",
+      "status_required": "Trạng thái là bắt buộc"
+    },
+    "buttons": {
+      "cancel": "Hủy",
+      "save": "Lưu",
+      "add_photo": "Thêm ảnh"
+    }
+  }
+}

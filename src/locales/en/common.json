@@ -1,0 +1,32 @@
+{
+  "RootLayout": {
+    "meta_title": "Next.js Boilerplate",
+    "meta_description": "A modern Next.js boilerplate with TypeScript, Tailwind CSS, and more."
+  },
+  "ModeToggle": {
+    "toggle_theme": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "LanguageToggle": {
+    "toggle_language": "Toggle language",
+    "english": "English",
+    "vietnamese": "Vietnamese"
+  },
+  "DataTable": {
+    "no_results": "No results.",
+    "rows_selected": "{selected} of {total} row(s) selected.",
+    "rows_per_page": "Rows per page",
+    "page_info": "Page {current} of {total}",
+    "go_to_first_page": "Go to first page",
+    "go_to_previous_page": "Go to previous page",
+    "go_to_next_page": "Go to next page",
+    "go_to_last_page": "Go to last page",
+    "toggle_columns": "Toggle columns",
+    "view": "View",
+    "asc": "Asc",
+    "desc": "Desc",
+    "hide": "Hide"
+  }
+}

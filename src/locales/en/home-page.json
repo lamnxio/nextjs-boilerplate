@@ -1,0 +1,15 @@
+{
+  "HomePage": {
+    "meta_title": "Home Page",
+    "meta_description": "This is the home page of our application."
+  },
+  "Counter": {
+    "title": "Counter",
+    "description": "Click the buttons to change the counter value",
+    "decrease": "Decrease",
+    "increase": "Increase",
+    "reset": "Reset",
+    "reset_all": "Reset All",
+    "reset_all_success": "All data has been reset successfully!"
+  }
+}

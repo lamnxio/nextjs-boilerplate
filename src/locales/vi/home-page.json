@@ -1,0 +1,15 @@
+{
+  "HomePage": {
+    "meta_title": "Trang chủ",
+    "meta_description": "Đây là trang chủ của ứng dụng chúng tôi."
+  },
+  "Counter": {
+    "title": "Bộ đếm",
+    "description": "Nhấp vào các nút để thay đổi giá trị bộ đếm",
+    "decrease": "Giảm",
+    "increase": "Tăng",
+    "reset": "Đặt lại",
+    "reset_all": "Đặt lại tất cả",
+    "reset_all_success": "Tất cả dữ liệu đã được đặt lại thành công!"
+  }
+}
