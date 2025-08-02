@@ -116,7 +116,7 @@ pnpm dev
 - `pnpm lint:fix` - Fix ESLint issues
 - `pnpm check:types` - Type check with TypeScript
 - `pnpm commit` - Interactive commit with Commitizen
-- `pnpm gen:petstore-api` - Generate API client from Swagger
+- `pnpm gen:api` - Generate API client from Swagger
 
 ## 🌍 Internationalization
 
