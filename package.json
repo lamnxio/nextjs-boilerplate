@@ -10,7 +10,7 @@
     "lint:fix": "next lint --fix",
     "check:types": "tsc --noEmit --pretty",
     "commit": "cz",
-    "gen:petstore-api": "pnpx swagger-typescript-api generate --axios --path https://petstore.swagger.io/v2/swagger.json --output src/generated/petstore --name petstore-api.ts --api-class-name PetstoreApi",
+    "gen:api": "pnpx swagger-typescript-api generate --axios --path https://petstore.swagger.io/v2/swagger.json --output src/services/apis --name petstore-api.ts --api-class-name PetstoreApi",
     "prepare": "husky"
   },
   "lint-staged": {
