@@ -11,7 +11,7 @@ import { useTranslations } from 'next-intl'
 import * as React from 'react'
 import { useFieldArray, useForm, UseFormReturn } from 'react-hook-form'
 import { Plus, Trash } from 'lucide-react'
-import { cn } from '@/libs/utils'
+import { cn } from '@/lib/utils'
 import { TagsInput, TagsInputInput, TagsInputItem, TagsInputList } from '@/components/ui/tags-input'
 
 interface PetFormProps {

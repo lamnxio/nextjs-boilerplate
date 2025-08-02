@@ -1,5 +1,7 @@
+'use client'
+
 import { STORAGE_KEY } from '@/constants/storage-key'
-import { PetstoreApi } from '@/generated/petstore/petstore-api'
+import { PetstoreApi } from '@/services/apis/petstore-api'
 import { getLocalStorageItem } from '@/utils/local-storage'
 import qs from 'qs'
 
@@ -14,7 +16,7 @@ const securityWorker = async (securityData: string | null) => {
   return {}
 }
 
-const api = new PetstoreApi({
+export const api = new PetstoreApi({
   securityWorker,
   baseURL: process.env.NEXT_PUBLIC_API_URL,
   timeout: 10000,
@@ -25,5 +27,3 @@ const api = new PetstoreApi({
 })
 
 api.setSecurityData(getLocalStorageItem(STORAGE_KEY.ACCESS_TOKEN) || null)
-
-export default api

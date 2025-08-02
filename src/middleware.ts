@@ -1,5 +1,5 @@
 import createMiddleware from 'next-intl/middleware'
-import { routing } from '@/configs/next-intl'
+import { routing } from '@/lib/next-intl'
 
 export default createMiddleware(routing)
 

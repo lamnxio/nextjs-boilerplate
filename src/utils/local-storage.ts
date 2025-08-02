@@ -59,7 +59,11 @@ export const getLocalStorageItem = <T>(key: StorageKey, defaultValue?: T): T | u
     if (item === null) {
       return defaultValue
     }
-    return JSON.parse(item) as T
+    try {
+      return JSON.parse(item) as T
+    } catch {
+      return item as T
+    }
   } catch (error) {
     console.error('Error getting localStorage item:', error)
     return defaultValue
@@ -138,37 +142,5 @@ export const hasLocalStorageItem = (key: StorageKey): boolean => {
   } catch (error) {
     console.error('Error checking localStorage item:', error)
     return false
-  }
-}
-
-/**
- * Get localStorage usage info
- * @returns Object with storage information
- */
-export const getStorageInfo = (): {
-  used: number
-  available: number
-  total: number
-} => {
-  if (!isLocalStorageAvailable()) {
-    return { used: 0, available: 0, total: 0 }
-  }
-
-  try {
-    let used = 0
-    for (const key in localStorage) {
-      if (localStorage.hasOwnProperty(key)) {
-        used += localStorage[key].length + key.length
-      }
-    }
-
-    // Most browsers have ~5-10MB limit for localStorage
-    const total = 5 * 1024 * 1024 // 5MB estimation
-    const available = total - used
-
-    return { used, available, total }
-  } catch (error) {
-    console.error('Error getting storage info:', error)
-    return { used: 0, available: 0, total: 0 }
   }
 }

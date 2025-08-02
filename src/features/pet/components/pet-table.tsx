@@ -1,8 +1,8 @@
 'use client'
 
-import { useFindPetsByStatus } from '@/hooks/queries/use-pet-queries'
-import { getPetColumns } from './pet-columns'
+import { useFindPetsByStatus } from '@/features/pet/hooks/use-pet-queries'
 import { useTranslations } from 'next-intl'
+import { getPetColumns } from './pet-columns'
 
 import {
   ColumnFiltersState,
@@ -16,18 +16,16 @@ import {
   VisibilityState,
 } from '@tanstack/react-table'
 
+import { Skeleton } from '@/components/ui/skeleton'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { useState } from 'react'
-import { DataTablePagination } from '../../components/data-table/data-table-pagination'
-import { DataTableViewOptions } from '../../components/data-table/data-table-view-options'
-import { Input } from '../../components/ui/input'
-import { Skeleton } from '@/components/ui/skeleton'
-import { Button } from '@/components/ui/button'
+import { DataTablePagination } from '../../../components/data-table/data-table-pagination'
+import { DataTableViewOptions } from '../../../components/data-table/data-table-view-options'
+import { Input } from '../../../components/ui/input'
 import { AddPetDialog } from './add-pet-dialog'
 
 export default function PetTable() {
-  const t = useTranslations('PetTable')
-  const tDataTable = useTranslations('DataTable')
+  const t = useTranslations()
 
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
@@ -126,7 +124,7 @@ export default function PetTable() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <Input
-          placeholder={t('search_placeholder')}
+          placeholder={t('PetTable.search_placeholder')}
           value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
           onChange={(event) => table.getColumn('name')?.setFilterValue(event.target.value)}
           className="max-w-sm"
@@ -162,7 +160,7 @@ export default function PetTable() {
             ) : (
               <TableRow>
                 <TableCell colSpan={petColumns.length} className="h-24 text-center">
-                  {tDataTable('no_results')}
+                  {t('DataTable.no_results')}
                 </TableCell>
               </TableRow>
             )}

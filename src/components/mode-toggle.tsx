@@ -1,13 +1,13 @@
 'use client'
 
-import { Moon, Sun } from 'lucide-react'
-import { useTheme } from 'next-themes'
-import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { Moon, Sun } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { useTheme } from 'next-themes'
 
 export function ModeToggle() {
-  const { setTheme } = useTheme()
+  const { theme: activeTheme, setTheme, themes } = useTheme()
   const t = useTranslations('ModeToggle')
 
   return (
@@ -20,9 +20,11 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>{t('light')}</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>{t('dark')}</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>{t('system')}</DropdownMenuItem>
+        {themes.map((theme) => (
+          <DropdownMenuCheckboxItem key={theme} checked={theme === activeTheme} onClick={() => setTheme(theme)}>
+            {t(theme)}
+          </DropdownMenuCheckboxItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   )

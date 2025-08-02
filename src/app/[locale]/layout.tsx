@@ -1,5 +1,5 @@
 import { AppHeader } from '@/components/layout/app-header'
-import { routing } from '@/configs/next-intl'
+import { routing } from '@/lib/next-intl'
 import AppProvider from '@/providers/app-provider'
 import '@/styles/globals.css'
 import type { Metadata } from 'next'

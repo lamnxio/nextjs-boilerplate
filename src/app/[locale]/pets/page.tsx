@@ -1,4 +1,4 @@
-import PetTable from '@/modules/pets/pet-table'
+import PetTable from '@/features/pet/components/pet-table'
 import { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 

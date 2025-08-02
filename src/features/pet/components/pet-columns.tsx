@@ -12,13 +12,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Pet } from '@/generated/petstore/petstore-api'
-import { TranslatorNs } from '@/types/next-intl'
+import { Pet } from '@/services/apis/petstore-api'
+import { Translator } from '@/types/next-intl'
 import { ColumnDef } from '@tanstack/react-table'
 import { MoreHorizontal } from 'lucide-react'
 
 interface GetPetColumnsProps {
-  t: TranslatorNs<'PetTable'>
+  t: Translator
 }
 
 export const getPetColumns = ({ t }: GetPetColumnsProps): ColumnDef<Pet>[] => {
@@ -29,16 +29,18 @@ export const getPetColumns = ({ t }: GetPetColumnsProps): ColumnDef<Pet>[] => {
         <Checkbox
           checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && 'indeterminate')}
           onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-          aria-label={t('select_all')}
+          aria-label={t('PetTable.select_all')}
         />
       ),
-      cell: ({ row }) => <Checkbox checked={row.getIsSelected()} onCheckedChange={(value) => row.toggleSelected(!!value)} aria-label={t('select_row')} />,
+      cell: ({ row }) => (
+        <Checkbox checked={row.getIsSelected()} onCheckedChange={(value) => row.toggleSelected(!!value)} aria-label={t('PetTable.select_row')} />
+      ),
       enableSorting: false,
       enableHiding: false,
     },
     {
       accessorKey: 'id',
-      header: ({ column }) => <DataTableColumnHeader column={column} title={t('columns.id')} />,
+      header: ({ column }) => <DataTableColumnHeader column={column} title={t('PetTable.columns.id')} />,
       cell: ({ row }) => {
         const id = row.getValue('id') as number
         return <div className="font-medium">{id}</div>
@@ -46,7 +48,7 @@ export const getPetColumns = ({ t }: GetPetColumnsProps): ColumnDef<Pet>[] => {
     },
     {
       accessorKey: 'name',
-      header: ({ column }) => <DataTableColumnHeader column={column} title={t('columns.name')} />,
+      header: ({ column }) => <DataTableColumnHeader column={column} title={t('PetTable.columns.name')} />,
       cell: ({ row }) => {
         const name = row.getValue('name') as string
         return <div className="font-medium">{name}</div>
@@ -54,7 +56,7 @@ export const getPetColumns = ({ t }: GetPetColumnsProps): ColumnDef<Pet>[] => {
     },
     {
       accessorKey: 'category',
-      header: ({ column }) => <DataTableColumnHeader column={column} title={t('columns.category')} />,
+      header: ({ column }) => <DataTableColumnHeader column={column} title={t('PetTable.columns.category')} />,
       cell: ({ row }) => {
         const category = row.getValue('category') as Pet['category']
         return <div>{category?.name ? <Badge variant="outline">{category.name}</Badge> : <span className="text-muted-foreground">-</span>}</div>
@@ -62,7 +64,7 @@ export const getPetColumns = ({ t }: GetPetColumnsProps): ColumnDef<Pet>[] => {
     },
     {
       accessorKey: 'status',
-      header: ({ column }) => <DataTableColumnHeader column={column} title={t('columns.status')} />,
+      header: ({ column }) => <DataTableColumnHeader column={column} title={t('PetTable.columns.status')} />,
       cell: ({ row }) => {
         const status = row.getValue('status') as Pet['status']
 
@@ -82,13 +84,13 @@ export const getPetColumns = ({ t }: GetPetColumnsProps): ColumnDef<Pet>[] => {
         const getStatusText = (status: Pet['status']) => {
           switch (status) {
             case 'available':
-              return t('status.available')
+              return t('PetTable.status.available')
             case 'pending':
-              return t('status.pending')
+              return t('PetTable.status.pending')
             case 'sold':
-              return t('status.sold')
+              return t('PetTable.status.sold')
             default:
-              return t('status.unknown')
+              return t('PetTable.status.unknown')
           }
         }
 
@@ -97,7 +99,7 @@ export const getPetColumns = ({ t }: GetPetColumnsProps): ColumnDef<Pet>[] => {
     },
     {
       accessorKey: 'tags',
-      header: ({ column }) => <DataTableColumnHeader column={column} title={t('columns.tags')} />,
+      header: ({ column }) => <DataTableColumnHeader column={column} title={t('PetTable.columns.tags')} />,
       cell: ({ row }) => {
         const tags = row.getValue('tags') as Pet['tags']
         return (
@@ -122,10 +124,10 @@ export const getPetColumns = ({ t }: GetPetColumnsProps): ColumnDef<Pet>[] => {
     },
     {
       accessorKey: 'photoUrls',
-      header: ({ column }) => <DataTableColumnHeader column={column} title={t('columns.photos')} />,
+      header: ({ column }) => <DataTableColumnHeader column={column} title={t('PetTable.columns.photos')} />,
       cell: ({ row }) => {
         const photoUrls = row.getValue('photoUrls') as string[]
-        return <div className="text-muted-foreground text-sm">{t('photo_count', { count: photoUrls?.length || 0 })}</div>
+        return <div className="text-muted-foreground text-sm">{t('PetTable.photo_count', { count: photoUrls?.length || 0 })}</div>
       },
     },
     {
@@ -138,17 +140,17 @@ export const getPetColumns = ({ t }: GetPetColumnsProps): ColumnDef<Pet>[] => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">{t('actions.open_menu')}</span>
+                <span className="sr-only">{t('PetTable.actions.open_menu')}</span>
                 <MoreHorizontal className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>{t('actions.actions')}</DropdownMenuLabel>
-              <DropdownMenuItem onClick={() => navigator.clipboard.writeText(pet.id?.toString() || '')}>{t('actions.copy_pet_id')}</DropdownMenuItem>
+              <DropdownMenuLabel>{t('PetTable.actions.actions')}</DropdownMenuLabel>
+              <DropdownMenuItem onClick={() => navigator.clipboard.writeText(pet.id?.toString() || '')}>{t('PetTable.actions.copy_pet_id')}</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>{t('actions.view_details')}</DropdownMenuItem>
-              <DropdownMenuItem>{t('actions.edit_pet')}</DropdownMenuItem>
-              <DropdownMenuItem variant="destructive">{t('actions.delete_pet')}</DropdownMenuItem>
+              <DropdownMenuItem>{t('PetTable.actions.view_details')}</DropdownMenuItem>
+              <DropdownMenuItem>{t('PetTable.actions.edit_pet')}</DropdownMenuItem>
+              <DropdownMenuItem variant="destructive">{t('PetTable.actions.delete_pet')}</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         )

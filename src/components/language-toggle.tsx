@@ -1,19 +1,32 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { useTranslations } from 'next-intl'
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { usePathname, useRouter } from '@/lib/next-intl'
 import { Languages } from 'lucide-react'
-import { usePathname, useRouter } from '@/configs/next-intl'
+import { useLocale, useTranslations } from 'next-intl'
+import { useCallback, useMemo } from 'react'
 
 export function LanguageToggle() {
   const t = useTranslations('LanguageToggle')
   const pathname = usePathname()
   const router = useRouter()
+  const locale = useLocale()
 
-  const handleLanguageChange = (locale: string) => {
-    router.push(pathname, { locale })
-  }
+  const languageOptions = useMemo(
+    () => [
+      { value: 'en', label: t('english') },
+      { value: 'vi', label: t('vietnamese') },
+    ],
+    [t],
+  )
+
+  const handleLanguageChange = useCallback(
+    (newLocale: string) => {
+      router.push(pathname, { locale: newLocale })
+    },
+    [router, pathname],
+  )
 
   return (
     <DropdownMenu>
@@ -24,8 +37,11 @@ export function LanguageToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => handleLanguageChange('en')}>{t('english')}</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleLanguageChange('vi')}>{t('vietnamese')}</DropdownMenuItem>
+        {languageOptions.map(({ value, label }) => (
+          <DropdownMenuCheckboxItem key={value} checked={value === locale} onClick={() => handleLanguageChange(value)}>
+            {label}
+          </DropdownMenuCheckboxItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   )

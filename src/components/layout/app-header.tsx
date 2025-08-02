@@ -1,6 +1,6 @@
 import { LanguageToggle } from '@/components/language-toggle'
 import { ModeToggle } from '@/components/mode-toggle'
-import { Link } from '@/configs/next-intl'
+import { Link } from '@/lib/next-intl'
 import { Dog, Home } from 'lucide-react'
 import { Button } from '../ui/button'
 
