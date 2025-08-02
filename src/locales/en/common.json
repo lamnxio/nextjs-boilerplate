@@ -28,5 +28,9 @@
     "asc": "Asc",
     "desc": "Desc",
     "hide": "Hide"
+  },
+  "Actions": {
+    "reset_all": "Reset All",
+    "reset_all_success": "All data has been reset successfully!"
   }
 }

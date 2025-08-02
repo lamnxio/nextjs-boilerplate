@@ -54,7 +54,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
     <html lang={locale} suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <AppProvider>
-          <div className="container mx-auto px-4 py-8">
+          <div className="container mx-auto space-y-8 px-4 py-8">
             <AppHeader />
             <main>{children}</main>
           </div>

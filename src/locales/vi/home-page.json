@@ -1,15 +1,33 @@
 {
   "HomePage": {
     "meta_title": "Trang chủ",
-    "meta_description": "Đây là trang chủ của ứng dụng chúng tôi."
+    "meta_description": "Đây là trang chủ của ứng dụng chúng tôi.",
+    "title": "Chào mừng đến với Next.js Boilerplate",
+    "subtitle": "Thử nghiệm các tính năng và game dưới đây"
   },
   "Counter": {
     "title": "Bộ đếm",
     "description": "Nhấp vào các nút để thay đổi giá trị bộ đếm",
     "decrease": "Giảm",
     "increase": "Tăng",
-    "reset": "Đặt lại",
-    "reset_all": "Đặt lại tất cả",
-    "reset_all_success": "Tất cả dữ liệu đã được đặt lại thành công!"
+    "reset": "Đặt lại"
+  },
+  "TicTacToe": {
+    "title": "Tic Tac Toe",
+    "player_turn": "Lượt của người chơi {player}",
+    "player_wins": "Người chơi {player} thắng!",
+    "draw": "Hòa!",
+    "play_again": "Chơi lại",
+    "reset_stats": "Xóa thống kê",
+    "statistics": "Thống kê",
+    "total_games": "Tổng",
+    "x_wins": "X thắng",
+    "o_wins": "O thắng",
+    "draws": "Hòa",
+    "win_message": "Chúc mừng! Người chơi {player} đã thắng!",
+    "x_leading": "X đang dẫn đầu!",
+    "o_leading": "O đang dẫn đầu!",
+    "tied": "Hòa nhau!",
+    "no_winner_yet": "Chưa có ai thắng"
   }
 }

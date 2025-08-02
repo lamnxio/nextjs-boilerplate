@@ -6,7 +6,7 @@ import { Button } from '../ui/button'
 
 export function AppHeader() {
   return (
-    <div className="mb-8 flex items-center justify-end">
+    <div className="flex items-center justify-end">
       <div className="flex items-center gap-2">
         <Button size="icon" variant="outline" asChild>
           <Link href="/">

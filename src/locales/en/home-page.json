@@ -1,15 +1,33 @@
 {
   "HomePage": {
     "meta_title": "Home Page",
-    "meta_description": "This is the home page of our application."
+    "meta_description": "This is the home page of our application.",
+    "title": "Welcome to Next.js Boilerplate",
+    "subtitle": "Try out the features and games below"
   },
   "Counter": {
     "title": "Counter",
     "description": "Click the buttons to change the counter value",
     "decrease": "Decrease",
     "increase": "Increase",
-    "reset": "Reset",
-    "reset_all": "Reset All",
-    "reset_all_success": "All data has been reset successfully!"
+    "reset": "Reset"
+  },
+  "TicTacToe": {
+    "title": "Tic Tac Toe",
+    "player_turn": "Player {player}'s turn",
+    "player_wins": "Player {player} wins!",
+    "draw": "It's a draw!",
+    "play_again": "Play Again",
+    "reset_stats": "Reset Stats",
+    "statistics": "Statistics",
+    "total_games": "Total",
+    "x_wins": "X Wins",
+    "o_wins": "O Wins",
+    "draws": "Draws",
+    "win_message": "Congratulations! Player {player} won!",
+    "x_leading": "X is leading!",
+    "o_leading": "O is leading!",
+    "tied": "It's tied!",
+    "no_winner_yet": "No winner yet"
   }
 }
