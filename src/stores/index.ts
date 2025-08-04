@@ -4,6 +4,7 @@ import { immer } from "zustand/middleware/immer"
 import { createCounterSlice } from "./slices/counter-slice"
 import { createTicTacToeSlice } from "./slices/tic-tac-toe-slice"
 import { Store } from "./types"
+import { STORAGE_KEY } from "@/constants/storage-key"
 
 export const useStore = create<Store>()(
   immer(
@@ -17,7 +18,7 @@ export const useStore = create<Store>()(
         }
       },
       {
-        name: "zustand-storage",
+        name: STORAGE_KEY.ZUSTAND_STORAGE,
       },
     ),
   ),
