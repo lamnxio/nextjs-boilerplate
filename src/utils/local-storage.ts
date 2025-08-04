@@ -3,7 +3,7 @@
  * Provides type-safe localStorage operations with error handling
  */
 
-import { STORAGE_KEY } from '@/constants/storage-key'
+import { STORAGE_KEY } from "@/constants/storage-key"
 
 // Type for valid storage keys
 type StorageKey = (typeof STORAGE_KEY)[keyof typeof STORAGE_KEY]
@@ -14,7 +14,7 @@ type StorageKey = (typeof STORAGE_KEY)[keyof typeof STORAGE_KEY]
  */
 export const isLocalStorageAvailable = (): boolean => {
   try {
-    return typeof window !== 'undefined' && 'localStorage' in window
+    return typeof window !== "undefined" && "localStorage" in window
   } catch {
     return false
   }
@@ -28,7 +28,7 @@ export const isLocalStorageAvailable = (): boolean => {
  */
 export const setLocalStorageItem = <T>(key: StorageKey, value: T): boolean => {
   if (!isLocalStorageAvailable()) {
-    console.warn('localStorage is not available')
+    console.warn("localStorage is not available")
     return false
   }
 
@@ -37,7 +37,7 @@ export const setLocalStorageItem = <T>(key: StorageKey, value: T): boolean => {
     localStorage.setItem(key, serializedValue)
     return true
   } catch (error) {
-    console.error('Error setting localStorage item:', error)
+    console.error("Error setting localStorage item:", error)
     return false
   }
 }
@@ -50,7 +50,7 @@ export const setLocalStorageItem = <T>(key: StorageKey, value: T): boolean => {
  */
 export const getLocalStorageItem = <T>(key: StorageKey, defaultValue?: T): T | undefined => {
   if (!isLocalStorageAvailable()) {
-    console.warn('localStorage is not available')
+    console.warn("localStorage is not available")
     return defaultValue
   }
 
@@ -65,7 +65,7 @@ export const getLocalStorageItem = <T>(key: StorageKey, defaultValue?: T): T | u
       return item as T
     }
   } catch (error) {
-    console.error('Error getting localStorage item:', error)
+    console.error("Error getting localStorage item:", error)
     return defaultValue
   }
 }
@@ -77,7 +77,7 @@ export const getLocalStorageItem = <T>(key: StorageKey, defaultValue?: T): T | u
  */
 export const removeLocalStorageItem = (key: StorageKey): boolean => {
   if (!isLocalStorageAvailable()) {
-    console.warn('localStorage is not available')
+    console.warn("localStorage is not available")
     return false
   }
 
@@ -85,7 +85,7 @@ export const removeLocalStorageItem = (key: StorageKey): boolean => {
     localStorage.removeItem(key)
     return true
   } catch (error) {
-    console.error('Error removing localStorage item:', error)
+    console.error("Error removing localStorage item:", error)
     return false
   }
 }
@@ -96,7 +96,7 @@ export const removeLocalStorageItem = (key: StorageKey): boolean => {
  */
 export const clearLocalStorage = (): boolean => {
   if (!isLocalStorageAvailable()) {
-    console.warn('localStorage is not available')
+    console.warn("localStorage is not available")
     return false
   }
 
@@ -104,7 +104,7 @@ export const clearLocalStorage = (): boolean => {
     localStorage.clear()
     return true
   } catch (error) {
-    console.error('Error clearing localStorage:', error)
+    console.error("Error clearing localStorage:", error)
     return false
   }
 }
@@ -115,14 +115,14 @@ export const clearLocalStorage = (): boolean => {
  */
 export const getLocalStorageKeys = (): string[] => {
   if (!isLocalStorageAvailable()) {
-    console.warn('localStorage is not available')
+    console.warn("localStorage is not available")
     return []
   }
 
   try {
     return Object.keys(localStorage)
   } catch (error) {
-    console.error('Error getting localStorage keys:', error)
+    console.error("Error getting localStorage keys:", error)
     return []
   }
 }
@@ -140,7 +140,7 @@ export const hasLocalStorageItem = (key: StorageKey): boolean => {
   try {
     return localStorage.getItem(key) !== null
   } catch (error) {
-    console.error('Error checking localStorage item:', error)
+    console.error("Error checking localStorage item:", error)
     return false
   }
 }

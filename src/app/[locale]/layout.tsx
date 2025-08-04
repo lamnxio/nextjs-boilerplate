@@ -1,12 +1,12 @@
-import { AppHeader } from '@/components/layout/app-header'
-import { routing } from '@/lib/next-intl'
-import AppProvider from '@/providers/app-provider'
-import '@/styles/globals.css'
-import type { Metadata } from 'next'
-import { hasLocale } from 'next-intl'
-import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { Geist, Geist_Mono } from 'next/font/google'
-import { notFound } from 'next/navigation'
+import { AppHeader } from "@/components/layout/app-header"
+import { routing } from "@/lib/next-intl"
+import AppProvider from "@/providers/app-provider"
+import "@/styles/globals.css"
+import type { Metadata } from "next"
+import { hasLocale } from "next-intl"
+import { getTranslations, setRequestLocale } from "next-intl/server"
+import { Geist, Geist_Mono } from "next/font/google"
+import { notFound } from "next/navigation"
 
 interface LayoutProps {
   children: React.ReactNode
@@ -14,13 +14,13 @@ interface LayoutProps {
 }
 
 const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
 })
 
 const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 })
 
 export async function generateMetadata(props: LayoutProps): Promise<Metadata> {
@@ -28,12 +28,12 @@ export async function generateMetadata(props: LayoutProps): Promise<Metadata> {
 
   const t = await getTranslations({
     locale,
-    namespace: 'RootLayout',
+    namespace: "RootLayout",
   })
 
   return {
-    title: t('meta_title'),
-    description: t('meta_description'),
+    title: t("meta_title"),
+    description: t("meta_description"),
   }
 }
 

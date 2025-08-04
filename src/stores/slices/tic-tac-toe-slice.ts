@@ -1,6 +1,6 @@
-import { StateSlice } from '../types'
+import { StateSlice } from "../types"
 
-type Player = 'X' | 'O'
+type Player = "X" | "O"
 type Cell = Player | null
 type Board = Cell[]
 
@@ -50,7 +50,7 @@ const checkDraw = (board: Board): boolean => {
 export const createTicTacToeSlice: StateSlice<TicTacToeSlice> = (set, get) => ({
   ticTacToe: {
     board: initialBoard,
-    currentPlayer: 'X',
+    currentPlayer: "X",
     winner: null,
     isGameOver: false,
     isDraw: false,
@@ -79,13 +79,13 @@ export const createTicTacToeSlice: StateSlice<TicTacToeSlice> = (set, get) => ({
       ticTacToe: {
         ...state.ticTacToe,
         board: newBoard,
-        currentPlayer: gameOver ? currentPlayer : currentPlayer === 'X' ? 'O' : 'X',
+        currentPlayer: gameOver ? currentPlayer : currentPlayer === "X" ? "O" : "X",
         winner,
         isGameOver: gameOver,
         isDraw,
         gamesPlayed: gameOver ? state.ticTacToe.gamesPlayed + 1 : state.ticTacToe.gamesPlayed,
-        xWins: winner === 'X' ? state.ticTacToe.xWins + 1 : state.ticTacToe.xWins,
-        oWins: winner === 'O' ? state.ticTacToe.oWins + 1 : state.ticTacToe.oWins,
+        xWins: winner === "X" ? state.ticTacToe.xWins + 1 : state.ticTacToe.xWins,
+        oWins: winner === "O" ? state.ticTacToe.oWins + 1 : state.ticTacToe.oWins,
         draws: isDraw ? state.ticTacToe.draws + 1 : state.ticTacToe.draws,
       },
     }))
@@ -96,7 +96,7 @@ export const createTicTacToeSlice: StateSlice<TicTacToeSlice> = (set, get) => ({
       ticTacToe: {
         ...state.ticTacToe,
         board: initialBoard,
-        currentPlayer: 'X',
+        currentPlayer: "X",
         winner: null,
         isGameOver: false,
         isDraw: false,

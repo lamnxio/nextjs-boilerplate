@@ -1,4 +1,4 @@
-import { NextIntlClientProvider } from 'next-intl'
+import { NextIntlClientProvider } from "next-intl"
 
 interface NextIntlProviderProps {
   children: React.ReactNode

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react"
 
 export function useOpenState(props: { open?: boolean; onOpenChange?: (open: boolean) => void }) {
   const isControlled = props.open !== undefined && props.onOpenChange !== undefined

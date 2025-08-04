@@ -1,18 +1,18 @@
-'use client'
+"use client"
 
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Button } from '@/components/ui/button'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { LoadingButton } from '@/components/ui/loading-button'
-import { getAddPetSchema, PetValues } from '@/validations/pet-validation'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useTranslations } from 'next-intl'
-import * as React from 'react'
-import { useFieldArray, useForm, UseFormReturn } from 'react-hook-form'
-import { Plus, Trash } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import { TagsInput, TagsInputInput, TagsInputItem, TagsInputList } from '@/components/ui/tags-input'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Button } from "@/components/ui/button"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { LoadingButton } from "@/components/ui/loading-button"
+import { getAddPetSchema, PetValues } from "@/validations/pet-validation"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useTranslations } from "next-intl"
+import * as React from "react"
+import { useFieldArray, useForm, UseFormReturn } from "react-hook-form"
+import { Plus, Trash } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { TagsInput, TagsInputInput, TagsInputItem, TagsInputList } from "@/components/ui/tags-input"
 
 interface PetFormProps {
   onSubmit: (values: PetValues) => void
@@ -29,23 +29,23 @@ export function PetForm({ onSubmit, isLoading = false, onCancel, showFooter = tr
   const form = useForm<PetValues>({
     resolver: zodResolver(getAddPetSchema(t)),
     defaultValues: {
-      name: '',
+      name: "",
       photoUrls: [
         {
-          url: '',
+          url: "",
         },
       ],
-      category: '',
+      category: "",
     },
   })
 
   const { fields, append, remove } = useFieldArray({
     control: form.control,
-    name: 'photoUrls',
+    name: "photoUrls",
   })
 
   const statusOptions = React.useMemo(() => {
-    return ['available', 'pending', 'sold'].map((status) => ({
+    return ["available", "pending", "sold"].map((status) => ({
       value: status,
       label: t(`PetForm.status.${status}`),
     }))
@@ -59,9 +59,9 @@ export function PetForm({ onSubmit, isLoading = false, onCancel, showFooter = tr
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel withAsterisk>{t('PetTable.columns.name')}</FormLabel>
+              <FormLabel withAsterisk>{t("PetTable.columns.name")}</FormLabel>
               <FormControl>
-                <Input placeholder={t('PetTable.columns.name')} {...field} />
+                <Input placeholder={t("PetTable.columns.name")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -73,9 +73,9 @@ export function PetForm({ onSubmit, isLoading = false, onCancel, showFooter = tr
           name="category"
           render={({ field }) => (
             <FormItem>
-              <FormLabel withAsterisk>{t('PetTable.columns.category')}</FormLabel>
+              <FormLabel withAsterisk>{t("PetTable.columns.category")}</FormLabel>
               <FormControl>
-                <Input placeholder={t('PetTable.columns.category')} {...field} />
+                <Input placeholder={t("PetTable.columns.category")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -87,7 +87,7 @@ export function PetForm({ onSubmit, isLoading = false, onCancel, showFooter = tr
           name="photoUrls"
           render={({ field }) => (
             <FormItem>
-              <FormLabel withAsterisk>{t('PetTable.columns.photos')}</FormLabel>
+              <FormLabel withAsterisk>{t("PetTable.columns.photos")}</FormLabel>
 
               {fields.map((fieldItem, index) => (
                 <FormField
@@ -115,9 +115,9 @@ export function PetForm({ onSubmit, isLoading = false, onCancel, showFooter = tr
 
               <FormMessage />
 
-              <Button type="button" className="w-fit" variant="outline" size="sm" onClick={() => append({ url: '' })} disabled={field.disabled}>
+              <Button type="button" className="w-fit" variant="outline" size="sm" onClick={() => append({ url: "" })} disabled={field.disabled}>
                 <Plus />
-                {t('PetForm.buttons.add_photo')}
+                {t("PetForm.buttons.add_photo")}
               </Button>
             </FormItem>
           )}
@@ -151,11 +151,11 @@ export function PetForm({ onSubmit, isLoading = false, onCancel, showFooter = tr
           name="status"
           render={({ field }) => (
             <FormItem>
-              <FormLabel withAsterisk>{t('PetTable.columns.status')}</FormLabel>
+              <FormLabel withAsterisk>{t("PetTable.columns.status")}</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder={t('PetTable.columns.status')} />
+                    <SelectValue placeholder={t("PetTable.columns.status")} />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -172,14 +172,14 @@ export function PetForm({ onSubmit, isLoading = false, onCancel, showFooter = tr
         />
 
         {showFooter && (
-          <div className={cn('flex justify-end gap-2', footerClassName)}>
+          <div className={cn("flex justify-end gap-2", footerClassName)}>
             {onCancel && (
               <Button type="button" variant="outline" onClick={onCancel}>
-                {t('PetForm.buttons.cancel')}
+                {t("PetForm.buttons.cancel")}
               </Button>
             )}
             <LoadingButton type="submit" loading={isLoading}>
-              {t('PetForm.buttons.save')}
+              {t("PetForm.buttons.save")}
             </LoadingButton>
           </div>
         )}

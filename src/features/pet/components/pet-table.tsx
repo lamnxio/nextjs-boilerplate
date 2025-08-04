@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import { useFindPetsByStatus } from '@/features/pet/hooks/use-pet-queries'
-import { useTranslations } from 'next-intl'
-import { getPetColumns } from './pet-columns'
+import { useFindPetsByStatus } from "@/features/pet/hooks/use-pet-queries"
+import { useTranslations } from "next-intl"
+import { getPetColumns } from "./pet-columns"
 
 import {
   ColumnFiltersState,
@@ -14,15 +14,15 @@ import {
   SortingState,
   useReactTable,
   VisibilityState,
-} from '@tanstack/react-table'
+} from "@tanstack/react-table"
 
-import { Skeleton } from '@/components/ui/skeleton'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { useState } from 'react'
-import { DataTablePagination } from '../../../components/data-table/data-table-pagination'
-import { DataTableViewOptions } from '../../../components/data-table/data-table-view-options'
-import { Input } from '../../../components/ui/input'
-import { AddPetDialog } from './add-pet-dialog'
+import { Skeleton } from "@/components/ui/skeleton"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { useState } from "react"
+import { DataTablePagination } from "../../../components/data-table/data-table-pagination"
+import { DataTableViewOptions } from "../../../components/data-table/data-table-view-options"
+import { Input } from "../../../components/ui/input"
+import { AddPetDialog } from "./add-pet-dialog"
 
 export default function PetTable() {
   const t = useTranslations()
@@ -32,7 +32,7 @@ export default function PetTable() {
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = useState({})
 
-  const { data: pets, isLoading: findPetsByStatusLoading } = useFindPetsByStatus(['available', 'pending', 'sold'])
+  const { data: pets, isLoading: findPetsByStatusLoading } = useFindPetsByStatus(["available", "pending", "sold"])
   const petColumns = getPetColumns({ t })
 
   const table = useReactTable({
@@ -124,9 +124,9 @@ export default function PetTable() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <Input
-          placeholder={t('PetTable.search_placeholder')}
-          value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
-          onChange={(event) => table.getColumn('name')?.setFilterValue(event.target.value)}
+          placeholder={t("PetTable.search_placeholder")}
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+          onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
           className="max-w-sm"
         />
 
@@ -151,7 +151,7 @@ export default function PetTable() {
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
+                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                   ))}
@@ -160,7 +160,7 @@ export default function PetTable() {
             ) : (
               <TableRow>
                 <TableCell colSpan={petColumns.length} className="h-24 text-center">
-                  {t('DataTable.no_results')}
+                  {t("DataTable.no_results")}
                 </TableCell>
               </TableRow>
             )}

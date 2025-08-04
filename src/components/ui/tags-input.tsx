@@ -1,11 +1,11 @@
-import { cn } from '@/lib/utils'
-import * as TagsInputPrimitive from '@diceui/tags-input'
-import { X } from 'lucide-react'
-import * as React from 'react'
+import { cn } from "@/lib/utils"
+import * as TagsInputPrimitive from "@diceui/tags-input"
+import { X } from "lucide-react"
+import * as React from "react"
 
 const TagsInput = React.forwardRef<React.ComponentRef<typeof TagsInputPrimitive.Root>, React.ComponentPropsWithoutRef<typeof TagsInputPrimitive.Root>>(
   ({ className, ...props }, ref) => (
-    <TagsInputPrimitive.Root data-slot="tags-input" ref={ref} className={cn('flex w-full flex-col gap-2', className)} {...props} />
+    <TagsInputPrimitive.Root data-slot="tags-input" ref={ref} className={cn("flex w-full flex-col gap-2", className)} {...props} />
   ),
 )
 TagsInput.displayName = TagsInputPrimitive.Root.displayName
@@ -15,32 +15,32 @@ const TagsInputLabel = React.forwardRef<React.ComponentRef<typeof TagsInputPrimi
     <TagsInputPrimitive.Label
       data-slot="tags-input-label"
       ref={ref}
-      className={cn('text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70', className)}
+      className={cn("text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70", className)}
       {...props}
     />
   ),
 )
 TagsInputLabel.displayName = TagsInputPrimitive.Label.displayName
 
-const TagsInputList = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(({ className, ...props }, ref) => (
+const TagsInputList = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<"div">>(({ className, ...props }, ref) => (
   <div
     data-slot="tags-input-list"
     ref={ref}
     className={cn(
-      'border-input bg-background focus-within:ring-ring flex min-h-9 w-full flex-wrap items-center gap-1.5 rounded-md border px-3 py-2 text-sm focus-within:ring-1 disabled:cursor-not-allowed disabled:opacity-50',
+      "border-input bg-background focus-within:ring-ring flex min-h-9 w-full flex-wrap items-center gap-1.5 rounded-md border px-3 py-2 text-sm focus-within:ring-1 disabled:cursor-not-allowed disabled:opacity-50",
       className,
     )}
     {...props}
   />
 ))
-TagsInputList.displayName = 'TagsInputList'
+TagsInputList.displayName = "TagsInputList"
 
 const TagsInputInput = React.forwardRef<React.ComponentRef<typeof TagsInputPrimitive.Input>, React.ComponentPropsWithoutRef<typeof TagsInputPrimitive.Input>>(
   ({ className, ...props }, ref) => (
     <TagsInputPrimitive.Input
       data-slot="tags-input-input"
       ref={ref}
-      className={cn('placeholder:text-muted-foreground flex-1 bg-transparent outline-hidden disabled:cursor-not-allowed disabled:opacity-50', className)}
+      className={cn("placeholder:text-muted-foreground flex-1 bg-transparent outline-hidden disabled:cursor-not-allowed disabled:opacity-50", className)}
       {...props}
     />
   ),
@@ -53,7 +53,7 @@ const TagsInputItem = React.forwardRef<React.ComponentRef<typeof TagsInputPrimit
       data-slot="tags-input-item"
       ref={ref}
       className={cn(
-        'data-editing:ring-ring [&[data-highlighted]:not([data-editing])]:bg-accent [&[data-highlighted]:not([data-editing])]:text-accent-foreground inline-flex max-w-[calc(100%-8px)] items-center gap-1.5 rounded border bg-transparent px-2.5 py-1 text-sm focus:outline-hidden data-disabled:cursor-not-allowed data-disabled:opacity-50 data-editable:select-none data-editing:bg-transparent data-editing:ring-1 [&:not([data-editing])]:pr-1.5',
+        "data-editing:ring-ring [&[data-highlighted]:not([data-editing])]:bg-accent [&[data-highlighted]:not([data-editing])]:text-accent-foreground inline-flex max-w-[calc(100%-8px)] items-center gap-1.5 rounded border bg-transparent px-2.5 py-1 text-sm focus:outline-hidden data-disabled:cursor-not-allowed data-disabled:opacity-50 data-editable:select-none data-editing:bg-transparent data-editing:ring-1 [&:not([data-editing])]:pr-1.5",
         className,
       )}
       {...props}

@@ -1,9 +1,9 @@
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
-import { immer } from 'zustand/middleware/immer'
-import { createCounterSlice } from './slices/counter-slice'
-import { createTicTacToeSlice } from './slices/tic-tac-toe-slice'
-import { Store } from './types'
+import { create } from "zustand"
+import { persist } from "zustand/middleware"
+import { immer } from "zustand/middleware/immer"
+import { createCounterSlice } from "./slices/counter-slice"
+import { createTicTacToeSlice } from "./slices/tic-tac-toe-slice"
+import { Store } from "./types"
 
 export const useStore = create<Store>()(
   immer(
@@ -17,7 +17,7 @@ export const useStore = create<Store>()(
         }
       },
       {
-        name: 'zustand-storage',
+        name: "zustand-storage",
       },
     ),
   ),

@@ -1,4 +1,4 @@
-import { StateSlice } from '../types'
+import { StateSlice } from "../types"
 
 export interface CounterSlice {
   count: number

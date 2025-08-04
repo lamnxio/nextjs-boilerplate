@@ -1,3 +1,3 @@
-export const QUERY_KEY = {
-  PET: 'pet',
+export const QueryKey = {
+  PET: "pet",
 } as const

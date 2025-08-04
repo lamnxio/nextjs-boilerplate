@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { STORAGE_KEY } from '@/constants/storage-key'
-import { PetstoreApi } from '@/services/apis/petstore-api'
-import { getLocalStorageItem } from '@/utils/local-storage'
-import qs from 'qs'
+import { STORAGE_KEY } from "@/constants/storage-key"
+import { PetstoreApi } from "@/services/apis/petstore-api"
+import { getLocalStorageItem } from "@/utils/local-storage"
+import qs from "qs"
 
 const securityWorker = async (securityData: string | null) => {
   if (securityData) {
@@ -22,8 +22,8 @@ export const api = new PetstoreApi({
   timeout: 10000,
   paramsSerializer: (params) =>
     qs.stringify(params, {
-      arrayFormat: 'repeat',
+      arrayFormat: "repeat",
     }),
 })
 
-api.setSecurityData(getLocalStorageItem(STORAGE_KEY.ACCESS_TOKEN) || null)
+api.setSecurityData(getLocalStorageItem(STORAGE_KEY.ACCESS_TOKEN) ?? null)

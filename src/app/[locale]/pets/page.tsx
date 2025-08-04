@@ -1,6 +1,6 @@
-import PetTable from '@/features/pet/components/pet-table'
-import { Metadata } from 'next'
-import { getTranslations, setRequestLocale } from 'next-intl/server'
+import PetTable from "@/features/pet/components/pet-table"
+import { Metadata } from "next"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
 type PetPageProps = {
   params: Promise<{ locale: string }>
@@ -11,11 +11,11 @@ export async function generateMetadata(props: PetPageProps): Promise<Metadata> {
 
   const t = await getTranslations({
     locale,
-    namespace: 'PetPage',
+    namespace: "PetPage",
   })
 
   return {
-    title: t('meta_title'),
+    title: t("meta_title"),
   }
 }
 
