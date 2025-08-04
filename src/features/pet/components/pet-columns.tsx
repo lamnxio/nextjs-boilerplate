@@ -12,7 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Pet } from "@/services/apis/petstore-api"
+import { Pet } from "@/services/apis/petstore-api.gen"
 import { Translator } from "@/types/next-intl"
 import { ColumnDef } from "@tanstack/react-table"
 import { MoreHorizontal } from "lucide-react"

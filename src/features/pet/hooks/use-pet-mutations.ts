@@ -1,6 +1,6 @@
 import { api } from "@/services/apis"
 import { QUERY_KEY } from "@/constants/query-key"
-import type { Pet } from "@/services/apis/petstore-api"
+import type { Pet } from "@/services/apis/petstore-api.gen"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 export const useAddPet = () => {

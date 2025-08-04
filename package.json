@@ -11,7 +11,7 @@
     "check:types": "tsc --noEmit --pretty",
     "commit": "cz",
     "format": "prettier --write ./src",
-    "gen:api": "pnpx swagger-typescript-api generate --axios --path https://petstore.swagger.io/v2/swagger.json --output src/services/apis --name petstore-api.ts --api-class-name PetstoreApi",
+    "gen:api": "pnpx swagger-typescript-api generate --axios --path https://petstore.swagger.io/v2/swagger.json --output src/services/apis --name petstore-api.gen.ts --api-class-name PetstoreApi",
     "prepare": "husky"
   },
   "lint-staged": {

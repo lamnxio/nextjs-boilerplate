@@ -1,6 +1,6 @@
 import { api } from "@/services/apis"
 import { QUERY_KEY } from "@/constants/query-key"
-import { RequestParams } from "@/services/apis/petstore-api"
+import { RequestParams } from "@/services/apis/petstore-api.gen"
 import { useQuery } from "@tanstack/react-query"
 
 export const useGetPetById = (petId: number, params?: RequestParams) => {
@@ -22,7 +22,7 @@ export const useFindPetsByStatus = (status: ("available" | "pending" | "sold")[]
   }
 
   return useQuery({
-    queryKey: [QUERY_KEY.PET, "status", status, params],
+    queryKey: [QUERY_KEY.PET, status, params],
     queryFn,
   })
 }

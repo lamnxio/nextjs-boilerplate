@@ -1,7 +1,7 @@
 "use client"
 
 import { STORAGE_KEY } from "@/constants/storage-key"
-import { PetstoreApi } from "@/services/apis/petstore-api"
+import { PetstoreApi } from "@/services/apis/petstore-api.gen"
 import { getLocalStorageItem } from "@/utils/local-storage"
 import qs from "qs"
 
@@ -26,4 +26,7 @@ export const api = new PetstoreApi({
     }),
 })
 
-api.setSecurityData(getLocalStorageItem(STORAGE_KEY.ACCESS_TOKEN) ?? null)
+const accessToken = getLocalStorageItem<string>(STORAGE_KEY.ACCESS_TOKEN)
+if (accessToken) {
+  api.setSecurityData(accessToken)
+}
