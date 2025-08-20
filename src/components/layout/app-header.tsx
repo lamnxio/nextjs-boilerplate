@@ -16,7 +16,7 @@ const navigationItems = [
     label: "Pets",
   },
   {
-    href: "https://github.com/spring8904/nextjs-boilerplate",
+    href: "https://github.com/lamnxio/nextjs-boilerplate",
     icon: Github,
     label: "GitHub",
     external: true,
