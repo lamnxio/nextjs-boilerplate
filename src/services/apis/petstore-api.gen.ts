@@ -12,91 +12,104 @@
 
 export interface ApiResponse {
   /** @format int32 */
-  code?: number
-  type?: string
-  message?: string
+  code?: number;
+  type?: string;
+  message?: string;
 }
 
 export interface Category {
   /** @format int64 */
-  id?: number
-  name?: string
+  id?: number;
+  name?: string;
 }
 
 export interface Pet {
   /** @format int64 */
-  id?: number
-  category?: Category
+  id?: number;
+  category?: Category;
   /** @example "doggie" */
-  name: string
-  photoUrls: string[]
-  tags?: Tag[]
+  name: string;
+  photoUrls: string[];
+  tags?: Tag[];
   /** pet status in the store */
-  status?: "available" | "pending" | "sold"
+  status?: "available" | "pending" | "sold";
 }
 
 export interface Tag {
   /** @format int64 */
-  id?: number
-  name?: string
+  id?: number;
+  name?: string;
 }
 
 export interface Order {
   /** @format int64 */
-  id?: number
+  id?: number;
   /** @format int64 */
-  petId?: number
+  petId?: number;
   /** @format int32 */
-  quantity?: number
+  quantity?: number;
   /** @format date-time */
-  shipDate?: string
+  shipDate?: string;
   /** Order Status */
-  status?: "placed" | "approved" | "delivered"
-  complete?: boolean
+  status?: "placed" | "approved" | "delivered";
+  complete?: boolean;
 }
 
 export interface User {
   /** @format int64 */
-  id?: number
-  username?: string
-  firstName?: string
-  lastName?: string
-  email?: string
-  password?: string
-  phone?: string
+  id?: number;
+  username?: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  password?: string;
+  phone?: string;
   /**
    * User Status
    * @format int32
    */
-  userStatus?: number
+  userStatus?: number;
 }
 
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, HeadersDefaults, ResponseType } from "axios"
-import axios from "axios"
+import type {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  HeadersDefaults,
+  ResponseType,
+} from "axios";
+import axios from "axios";
 
-export type QueryParamsType = Record<string | number, any>
+export type QueryParamsType = Record<string | number, any>;
 
-export interface FullRequestParams extends Omit<AxiosRequestConfig, "data" | "params" | "url" | "responseType"> {
+export interface FullRequestParams
+  extends Omit<AxiosRequestConfig, "data" | "params" | "url" | "responseType"> {
   /** set parameter to `true` for call `securityWorker` for this request */
-  secure?: boolean
+  secure?: boolean;
   /** request path */
-  path: string
+  path: string;
   /** content type of request body */
-  type?: ContentType
+  type?: ContentType;
   /** query params */
-  query?: QueryParamsType
+  query?: QueryParamsType;
   /** format of response (i.e. response.json() -> format: "json") */
-  format?: ResponseType
+  format?: ResponseType;
   /** request body */
-  body?: unknown
+  body?: unknown;
 }
 
-export type RequestParams = Omit<FullRequestParams, "body" | "method" | "query" | "path">
+export type RequestParams = Omit<
+  FullRequestParams,
+  "body" | "method" | "query" | "path"
+>;
 
-export interface ApiConfig<SecurityDataType = unknown> extends Omit<AxiosRequestConfig, "data" | "cancelToken"> {
-  securityWorker?: (securityData: SecurityDataType | null) => Promise<AxiosRequestConfig | void> | AxiosRequestConfig | void
-  secure?: boolean
-  format?: ResponseType
+export interface ApiConfig<SecurityDataType = unknown>
+  extends Omit<AxiosRequestConfig, "data" | "cancelToken"> {
+  securityWorker?: (
+    securityData: SecurityDataType | null,
+  ) => Promise<AxiosRequestConfig | void> | AxiosRequestConfig | void;
+  secure?: boolean;
+  format?: ResponseType;
 }
 
 export enum ContentType {
@@ -108,77 +121,115 @@ export enum ContentType {
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public instance: AxiosInstance
-  private securityData: SecurityDataType | null = null
-  private securityWorker?: ApiConfig<SecurityDataType>["securityWorker"]
-  private secure?: boolean
-  private format?: ResponseType
+  public instance: AxiosInstance;
+  private securityData: SecurityDataType | null = null;
+  private securityWorker?: ApiConfig<SecurityDataType>["securityWorker"];
+  private secure?: boolean;
+  private format?: ResponseType;
 
-  constructor({ securityWorker, secure, format, ...axiosConfig }: ApiConfig<SecurityDataType> = {}) {
+  constructor({
+    securityWorker,
+    secure,
+    format,
+    ...axiosConfig
+  }: ApiConfig<SecurityDataType> = {}) {
     this.instance = axios.create({
       ...axiosConfig,
       baseURL: axiosConfig.baseURL || "https://petstore.swagger.io/v2",
-    })
-    this.secure = secure
-    this.format = format
-    this.securityWorker = securityWorker
+    });
+    this.secure = secure;
+    this.format = format;
+    this.securityWorker = securityWorker;
   }
 
   public setSecurityData = (data: SecurityDataType | null) => {
-    this.securityData = data
-  }
+    this.securityData = data;
+  };
 
-  protected mergeRequestParams(params1: AxiosRequestConfig, params2?: AxiosRequestConfig): AxiosRequestConfig {
-    const method = params1.method || (params2 && params2.method)
+  protected mergeRequestParams(
+    params1: AxiosRequestConfig,
+    params2?: AxiosRequestConfig,
+  ): AxiosRequestConfig {
+    const method = params1.method || (params2 && params2.method);
 
     return {
       ...this.instance.defaults,
       ...params1,
       ...(params2 || {}),
       headers: {
-        ...((method && this.instance.defaults.headers[method.toLowerCase() as keyof HeadersDefaults]) || {}),
+        ...((method &&
+          this.instance.defaults.headers[
+            method.toLowerCase() as keyof HeadersDefaults
+          ]) ||
+          {}),
         ...(params1.headers || {}),
         ...((params2 && params2.headers) || {}),
       },
-    }
+    };
   }
 
   protected stringifyFormItem(formItem: unknown) {
     if (typeof formItem === "object" && formItem !== null) {
-      return JSON.stringify(formItem)
+      return JSON.stringify(formItem);
     } else {
-      return `${formItem}`
+      return `${formItem}`;
     }
   }
 
   protected createFormData(input: Record<string, unknown>): FormData {
     if (input instanceof FormData) {
-      return input
+      return input;
     }
     return Object.keys(input || {}).reduce((formData, key) => {
-      const property = input[key]
-      const propertyContent: any[] = property instanceof Array ? property : [property]
+      const property = input[key];
+      const propertyContent: any[] =
+        property instanceof Array ? property : [property];
 
       for (const formItem of propertyContent) {
-        const isFileType = formItem instanceof Blob || formItem instanceof File
-        formData.append(key, isFileType ? formItem : this.stringifyFormItem(formItem))
+        const isFileType = formItem instanceof Blob || formItem instanceof File;
+        formData.append(
+          key,
+          isFileType ? formItem : this.stringifyFormItem(formItem),
+        );
       }
 
-      return formData
-    }, new FormData())
+      return formData;
+    }, new FormData());
   }
 
-  public request = async <T = any, _E = any>({ secure, path, type, query, format, body, ...params }: FullRequestParams): Promise<AxiosResponse<T>> => {
-    const secureParams = ((typeof secure === "boolean" ? secure : this.secure) && this.securityWorker && (await this.securityWorker(this.securityData))) || {}
-    const requestParams = this.mergeRequestParams(params, secureParams)
-    const responseFormat = format || this.format || undefined
+  public request = async <T = any, _E = any>({
+    secure,
+    path,
+    type,
+    query,
+    format,
+    body,
+    ...params
+  }: FullRequestParams): Promise<AxiosResponse<T>> => {
+    const secureParams =
+      ((typeof secure === "boolean" ? secure : this.secure) &&
+        this.securityWorker &&
+        (await this.securityWorker(this.securityData))) ||
+      {};
+    const requestParams = this.mergeRequestParams(params, secureParams);
+    const responseFormat = format || this.format || undefined;
 
-    if (type === ContentType.FormData && body && body !== null && typeof body === "object") {
-      body = this.createFormData(body as Record<string, unknown>)
+    if (
+      type === ContentType.FormData &&
+      body &&
+      body !== null &&
+      typeof body === "object"
+    ) {
+      body = this.createFormData(body as Record<string, unknown>);
     }
 
-    if (type === ContentType.Text && body && body !== null && typeof body !== "string") {
-      body = JSON.stringify(body)
+    if (
+      type === ContentType.Text &&
+      body &&
+      body !== null &&
+      typeof body !== "string"
+    ) {
+      body = JSON.stringify(body);
     }
 
     return this.instance.request({
@@ -191,8 +242,8 @@ export class HttpClient<SecurityDataType = unknown> {
       responseType: responseFormat,
       data: body,
       url: path,
-    })
-  }
+    });
+  };
 }
 
 /**
@@ -206,7 +257,9 @@ export class HttpClient<SecurityDataType = unknown> {
  *
  * This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.
  */
-export class PetstoreApi<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
+export class PetstoreApi<
+  SecurityDataType extends unknown,
+> extends HttpClient<SecurityDataType> {
   pet = {
     /**
      * No description
@@ -221,9 +274,9 @@ export class PetstoreApi<SecurityDataType extends unknown> extends HttpClient<Se
       petId: number,
       data: {
         /** Additional data to pass to server */
-        additionalMetadata?: string
+        additionalMetadata?: string;
         /** file to upload */
-        file?: File
+        file?: File;
       },
       params: RequestParams = {},
     ) =>
@@ -287,7 +340,7 @@ export class PetstoreApi<SecurityDataType extends unknown> extends HttpClient<Se
     findPetsByStatus: (
       query: {
         /** Status values that need to be considered for filter */
-        status: ("available" | "pending" | "sold")[]
+        status: ("available" | "pending" | "sold")[];
       },
       params: RequestParams = {},
     ) =>
@@ -313,7 +366,7 @@ export class PetstoreApi<SecurityDataType extends unknown> extends HttpClient<Se
     findPetsByTags: (
       query: {
         /** Tags to filter by */
-        tags: string[]
+        tags: string[];
       },
       params: RequestParams = {},
     ) =>
@@ -357,9 +410,9 @@ export class PetstoreApi<SecurityDataType extends unknown> extends HttpClient<Se
       petId: number,
       data: {
         /** Updated name of the pet */
-        name?: string
+        name?: string;
         /** Updated status of the pet */
-        status?: string
+        status?: string;
       },
       params: RequestParams = {},
     ) =>
@@ -388,7 +441,7 @@ export class PetstoreApi<SecurityDataType extends unknown> extends HttpClient<Se
         secure: true,
         ...params,
       }),
-  }
+  };
   store = {
     /**
      * @description Returns a map of status codes to quantities
@@ -456,7 +509,7 @@ export class PetstoreApi<SecurityDataType extends unknown> extends HttpClient<Se
         method: "DELETE",
         ...params,
       }),
-  }
+  };
   user = {
     /**
      * No description
@@ -534,9 +587,9 @@ export class PetstoreApi<SecurityDataType extends unknown> extends HttpClient<Se
     loginUser: (
       query: {
         /** The user name for login */
-        username: string
+        username: string;
         /** The password for login in clear text */
-        password: string
+        password: string;
       },
       params: RequestParams = {},
     ) =>
@@ -596,5 +649,5 @@ export class PetstoreApi<SecurityDataType extends unknown> extends HttpClient<Se
         type: ContentType.Json,
         ...params,
       }),
-  }
+  };
 }

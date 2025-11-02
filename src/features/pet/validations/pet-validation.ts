@@ -1,9 +1,11 @@
-import { Translator } from "@/types/next-intl"
+import { useTranslations } from "next-intl"
 import { z } from "zod"
 
 const status = ["available", "pending", "sold"] as const
 
-export const getAddPetSchema = (t: Translator) => {
+export const useGetAddPetSchema = () => {
+  const t = useTranslations()
+
   return z.object({
     category: z.string().min(1, t("PetForm.validation.category_name_required")),
     name: z.string().min(1, t("PetForm.validation.name_required")),
@@ -15,4 +17,4 @@ export const getAddPetSchema = (t: Translator) => {
   })
 }
 
-export type PetValues = z.infer<ReturnType<typeof getAddPetSchema>>
+export type AddPetValues = z.infer<ReturnType<typeof useGetAddPetSchema>>

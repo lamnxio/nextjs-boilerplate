@@ -12,6 +12,7 @@
     "commit": "cz",
     "format": "prettier --write ./src",
     "gen:api": "pnpx swagger-typescript-api generate --axios --path https://petstore.swagger.io/v2/swagger.json --output src/services/apis --name petstore-api.gen.ts --api-class-name PetstoreApi",
+    "i18n:check": "i18n-check -l src/locales -s en -u ./src/ -f next-intl -i ModeToggle.* PetForm.status.*",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -84,6 +85,7 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/eslintrc": "^3",
+    "@lingual/i18n-check": "^0.8.12",
     "@next/eslint-plugin-next": "^15.4.5",
     "@tailwindcss/postcss": "^4",
     "@tanstack/eslint-plugin-query": "^5.83.1",

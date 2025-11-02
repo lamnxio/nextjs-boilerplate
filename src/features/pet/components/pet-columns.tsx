@@ -13,15 +13,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Pet } from "@/services/apis/petstore-api.gen"
-import { Translator } from "@/types/next-intl"
 import { ColumnDef } from "@tanstack/react-table"
 import { MoreHorizontal } from "lucide-react"
+import { useTranslations } from "next-intl"
 
-interface GetPetColumnsProps {
-  t: Translator
-}
+export const useGetPetColumns = (): ColumnDef<Pet>[] => {
+  const t = useTranslations()
 
-export const getPetColumns = ({ t }: GetPetColumnsProps): ColumnDef<Pet>[] => {
   return [
     {
       id: "select",

@@ -1,0 +1,126 @@
+{
+  "Actions": {
+    "reset_all": "Đặt lại tất cả",
+    "reset_all_success": "Tất cả dữ liệu đã được đặt lại thành công!"
+  },
+  "AddPetDialog": {
+    "description": "Điền thông tin để thêm thú cưng mới vào hệ thống.",
+    "error_message": "Không thể thêm thú cưng",
+    "success_message": "Thêm thú cưng thành công",
+    "title": "Thêm thú cưng mới",
+    "trigger": "Thêm"
+  },
+  "Counter": {
+    "decrease": "Giảm",
+    "description": "Nhấp vào các nút để thay đổi giá trị bộ đếm",
+    "increase": "Tăng",
+    "reset": "Đặt lại",
+    "title": "Bộ đếm"
+  },
+  "DataTable": {
+    "asc": "Tăng dần",
+    "desc": "Giảm dần",
+    "go_to_first_page": "Đi đến trang đầu",
+    "go_to_last_page": "Đi đến trang cuối",
+    "go_to_next_page": "Đi đến trang tiếp theo",
+    "go_to_previous_page": "Đi đến trang trước",
+    "hide": "Ẩn",
+    "no_results": "Không có kết quả.",
+    "page_info": "Trang {current} trong tổng số {total}",
+    "rows_per_page": "Số hàng mỗi trang",
+    "rows_selected": "Đã chọn {selected} trong tổng số {total} hàng.",
+    "toggle_columns": "Bật/tắt cột",
+    "view": "Hiển thị"
+  },
+  "HomePage": {
+    "meta_description": "Đây là trang chủ của ứng dụng chúng tôi.",
+    "meta_title": "Trang chủ",
+    "subtitle": "Thử nghiệm các tính năng và game dưới đây",
+    "title": "Chào mừng đến với Next.js Boilerplate"
+  },
+  "LanguageToggle": {
+    "english": "Tiếng Anh",
+    "toggle_language": "Chuyển đổi ngôn ngữ",
+    "vietnamese": "Tiếng Việt"
+  },
+  "ModeToggle": {
+    "dark": "Tối",
+    "light": "Sáng",
+    "system": "Hệ thống",
+    "toggle_theme": "Chuyển đổi giao diện"
+  },
+  "PetForm": {
+    "buttons": {
+      "add_photo": "Thêm ảnh",
+      "cancel": "Hủy",
+      "save": "Lưu"
+    },
+    "status": {
+      "available": "Có sẵn",
+      "pending": "Đang chờ",
+      "sold": "Đã bán"
+    },
+    "validation": {
+      "category_name_required": "Tên danh mục là bắt buộc",
+      "invalid_url": "URL không hợp lệ",
+      "name_required": "Tên thú cưng là bắt buộc",
+      "photo_urls_required": "Ít nhất một ảnh",
+      "status_required": "Trạng thái là bắt buộc",
+      "tag_name_required": "Tên thẻ là bắt buộc"
+    }
+  },
+  "PetPage": {
+    "meta_title": "Quản lý Thú cưng"
+  },
+  "PetTable": {
+    "actions": {
+      "actions": "Hành động",
+      "copy_pet_id": "Sao chép ID",
+      "delete_pet": "Xóa",
+      "edit_pet": "Chỉnh sửa",
+      "open_menu": "Mở menu",
+      "view_details": "Xem chi tiết"
+    },
+    "columns": {
+      "category": "Danh mục",
+      "id": "ID",
+      "name": "Tên",
+      "photos": "Hình ảnh",
+      "status": "Trạng thái",
+      "tags": "Thẻ"
+    },
+    "photo_count": "{count} hình ảnh",
+    "search_placeholder": "Lọc tên...",
+    "select_all": "Chọn tất cả",
+    "select_row": "Chọn hàng",
+    "status": {
+      "available": "Có sẵn",
+      "pending": "Đang chờ",
+      "sold": "Đã bán",
+      "unknown": "Không xác định"
+    }
+  },
+  "RootLayout": {
+    "meta_description": "Một bộ khởi đầu Next.js hiện đại với TypeScript, Tailwind CSS và nhiều hơn nữa.",
+    "meta_title": "Next.js Boilerplate"
+  },
+  "TicTacToe": {
+    "draw": "Hòa!",
+    "draws": "Hòa",
+    "no_winner_yet": "Chưa có ai thắng",
+    "o_leading": "O đang dẫn đầu!",
+    "o_wins": "O thắng",
+    "play_again": "Chơi lại",
+    "player_turn": "Lượt của người chơi {player}",
+    "player_wins": "Người chơi {player} thắng!",
+    "reset_stats": "Xóa thống kê",
+    "statistics": "Thống kê",
+    "tied": "Hòa nhau!",
+    "title": "Tic Tac Toe",
+    "total_games": "Tổng",
+    "win_message": "Chúc mừng! Người chơi {player} đã thắng!",
+    "x_leading": "X đang dẫn đầu!",
+    "x_wins": "X thắng"
+  },
+  "test": "This is a test entry"
+}

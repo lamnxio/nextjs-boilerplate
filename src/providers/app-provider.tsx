@@ -1,6 +1,6 @@
 import { NextIntlProvider } from "./next-intl-provider"
 import { QueryProvider } from "./query-provider"
-import ThemeProvider from "./theme-provider"
+import { ThemeProvider } from "./theme-provider"
 import { ToastProvider } from "./toaster-provider"
 
 interface AppProviderProps {

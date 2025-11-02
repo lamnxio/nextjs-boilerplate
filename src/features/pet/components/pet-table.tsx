@@ -2,7 +2,7 @@
 
 import { useFindPetsByStatus } from "@/features/pet/hooks/use-pet-queries"
 import { useTranslations } from "next-intl"
-import { getPetColumns } from "./pet-columns"
+import { useGetPetColumns } from "./pet-columns"
 
 import {
   ColumnFiltersState,
@@ -33,7 +33,7 @@ export default function PetTable() {
   const [rowSelection, setRowSelection] = useState({})
 
   const { data: pets, isLoading: findPetsByStatusLoading } = useFindPetsByStatus(["available", "pending", "sold"])
-  const petColumns = getPetColumns({ t })
+  const petColumns = useGetPetColumns()
 
   const table = useReactTable({
     data: pets || [],

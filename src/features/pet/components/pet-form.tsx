@@ -1,33 +1,33 @@
 "use client"
 
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { LoadingButton } from "@/components/ui/loading-button"
-import { getAddPetSchema, PetValues } from "@/validations/pet-validation"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { TagsInput, TagsInputInput, TagsInputItem, TagsInputList } from "@/components/ui/tags-input"
+import { AddPetValues, useGetAddPetSchema } from "@/features/pet/validations/pet-validation"
+import { cn } from "@/lib/utils"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Plus, Trash } from "lucide-react"
 import { useTranslations } from "next-intl"
 import * as React from "react"
 import { useFieldArray, useForm, UseFormReturn } from "react-hook-form"
-import { Plus, Trash } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { TagsInput, TagsInputInput, TagsInputItem, TagsInputList } from "@/components/ui/tags-input"
 
 interface PetFormProps {
-  onSubmit: (values: PetValues) => void
+  onSubmit: (values: AddPetValues) => void
   isLoading?: boolean
   onCancel?: () => void
   showFooter?: boolean
   footerClassName?: string
-  children?: (form: UseFormReturn<PetValues>) => React.ReactNode
+  children?: (form: UseFormReturn<AddPetValues>) => React.ReactNode
 }
 
 export function PetForm({ onSubmit, isLoading = false, onCancel, showFooter = true, footerClassName, children }: PetFormProps) {
   const t = useTranslations()
 
-  const form = useForm<PetValues>({
-    resolver: zodResolver(getAddPetSchema(t)),
+  const form = useForm<AddPetValues>({
+    resolver: zodResolver(useGetAddPetSchema()),
     defaultValues: {
       name: "",
       photoUrls: [

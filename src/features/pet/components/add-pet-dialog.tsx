@@ -5,14 +5,14 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer"
 import { LoadingButton } from "@/components/ui/loading-button"
 import { useAddPet } from "@/features/pet/hooks/use-pet-mutations"
+import { AddPetValues } from "@/features/pet/validations/pet-validation"
 import { useMediaQuery } from "@/hooks/use-media-query"
-import { PetValues } from "@/validations/pet-validation"
+import { useOpenState } from "@/hooks/use-open-state"
 import { Plus } from "lucide-react"
 import { useTranslations } from "next-intl"
 import * as React from "react"
 import { toast } from "sonner"
 import { PetForm } from "./pet-form"
-import { useOpenState } from "@/hooks/use-open-state"
 
 interface AddPetDialogProps extends React.ComponentPropsWithoutRef<typeof Dialog> {
   showTrigger?: boolean
@@ -27,7 +27,7 @@ export function AddPetDialog({ showTrigger = true, onSuccess, ...props }: AddPet
 
   const { mutateAsync, isPending } = useAddPet()
 
-  const handleSubmit = async (values: PetValues) => {
+  const handleSubmit = async (values: AddPetValues) => {
     try {
       await mutateAsync({
         ...values,

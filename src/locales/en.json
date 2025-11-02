@@ -1,0 +1,125 @@
+{
+  "Actions": {
+    "reset_all": "Reset All",
+    "reset_all_success": "All data has been reset successfully!"
+  },
+  "AddPetDialog": {
+    "description": "Fill in the information to add a new pet to the system.",
+    "error_message": "Unable to add pet",
+    "success_message": "Pet added successfully",
+    "title": "Add New Pet",
+    "trigger": "Add"
+  },
+  "Counter": {
+    "decrease": "Decrease",
+    "description": "Click the buttons to change the counter value",
+    "increase": "Increase",
+    "reset": "Reset",
+    "title": "Counter"
+  },
+  "DataTable": {
+    "asc": "Asc",
+    "desc": "Desc",
+    "go_to_first_page": "Go to first page",
+    "go_to_last_page": "Go to last page",
+    "go_to_next_page": "Go to next page",
+    "go_to_previous_page": "Go to previous page",
+    "hide": "Hide",
+    "no_results": "No results.",
+    "page_info": "Page {current} of {total}",
+    "rows_per_page": "Rows per page",
+    "rows_selected": "{selected} of {total} row(s) selected.",
+    "toggle_columns": "Toggle columns",
+    "view": "View"
+  },
+  "HomePage": {
+    "meta_description": "This is the home page of our application.",
+    "meta_title": "Home Page",
+    "subtitle": "Try out the features and games below",
+    "title": "Welcome to Next.js Boilerplate"
+  },
+  "LanguageToggle": {
+    "english": "English",
+    "toggle_language": "Toggle language",
+    "vietnamese": "Vietnamese"
+  },
+  "ModeToggle": {
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System",
+    "toggle_theme": "Toggle theme"
+  },
+  "PetForm": {
+    "buttons": {
+      "add_photo": "Add Photo",
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "status": {
+      "available": "Available",
+      "pending": "Pending",
+      "sold": "Sold"
+    },
+    "validation": {
+      "category_name_required": "Category name is required",
+      "invalid_url": "Invalid URL",
+      "name_required": "Pet name is required",
+      "photo_urls_required": "At least one photo",
+      "status_required": "Status is required",
+      "tag_name_required": "Tag name is required"
+    }
+  },
+  "PetPage": {
+    "meta_title": "Pet Management"
+  },
+  "PetTable": {
+    "actions": {
+      "actions": "Actions",
+      "copy_pet_id": "Copy ID",
+      "delete_pet": "Delete",
+      "edit_pet": "Edit",
+      "open_menu": "Open menu",
+      "view_details": "View details"
+    },
+    "columns": {
+      "category": "Category",
+      "id": "ID",
+      "name": "Name",
+      "photos": "Photos",
+      "status": "Status",
+      "tags": "Tags"
+    },
+    "photo_count": "{count} photo(s)",
+    "search_placeholder": "Filter name...",
+    "select_all": "Select all",
+    "select_row": "Select row",
+    "status": {
+      "available": "Available",
+      "pending": "Pending",
+      "sold": "Sold",
+      "unknown": "Unknown"
+    }
+  },
+  "RootLayout": {
+    "meta_description": "A modern Next.js boilerplate with TypeScript, Tailwind CSS, and more.",
+    "meta_title": "Next.js Boilerplate"
+  },
+  "TicTacToe": {
+    "draw": "It's a draw!",
+    "draws": "Draws",
+    "no_winner_yet": "No winner yet",
+    "o_leading": "O is leading!",
+    "o_wins": "O Wins",
+    "play_again": "Play Again",
+    "player_turn": "Player {player}'s turn",
+    "player_wins": "Player {player} wins!",
+    "reset_stats": "Reset Stats",
+    "statistics": "Statistics",
+    "tied": "It's tied!",
+    "title": "Tic Tac Toe",
+    "total_games": "Total",
+    "win_message": "Congratulations! Player {player} won!",
+    "x_leading": "X is leading!",
+    "x_wins": "X Wins"
+  }
+}
